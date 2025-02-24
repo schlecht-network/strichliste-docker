@@ -1,6 +1,8 @@
 FROM alpine:3.18.3 as release
 
-RUN apk --no-cache add ca-certificates \
+RUN apk update \
+  && apk upgrade \
+  && apk --no-cache add ca-certificates \
   && apk --no-cache add \
     curl \
     tar
@@ -14,7 +16,9 @@ RUN rm -r strichliste.tar.gz
 
 FROM alpine:3.18.3
 
-RUN apk --no-cache add ca-certificates \
+RUN apk update \
+  && apk upgrade \
+  && apk --no-cache add ca-certificates \
   && apk --no-cache add \
     curl \
     php81 \
@@ -33,7 +37,8 @@ RUN apk --no-cache add ca-certificates \
     nginx \
     bash \
     mysql-client \
-    yarn
+    yarn \
+    envsubst
 
 COPY --from=release /source source
 
@@ -45,13 +50,15 @@ RUN chown -R www-data:www-data /source
 RUN chown -R www-data:www-data /var/lib/nginx
 RUN chown -R www-data:www-data /var/log/nginx
 RUN chown -R www-data:www-data /var/log/php81
+RUN mkdir /etc/nginx/conf.d
+RUN chown -R www-data:www-data /etc/nginx/conf.d
 
 USER www-data
 
 COPY ./config/php-fpm.conf /etc/php81/php-fpm.conf
 COPY ./config/www.conf /etc/php81/php-fpm.d/www.conf
 COPY ./config/nginx.conf /etc/nginx/nginx.conf
-COPY ./config/default.conf /etc/nginx/conf.d/default.conf
+COPY ./config/default.conf /etc/nginx/conf.d/default_source
 
 VOLUME /source/var
 

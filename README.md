@@ -16,8 +16,6 @@ and go into the strichliste directory.
 
 ### Configure env Variables
 The docker.env file contains environment variables necessary to run the service. Inside these files you need to change/set the MYSQL_ROOT_PASSWORD and MYSQL_PASSWORD variables to a new value.
-You also need to change {user_pwd} inside the DATABASE_URL variable to your corresponding password set in MYSQL_PASSWORD.
-The same change is necessary in config/default.conf:33 where the same DATABASE_URL variable is also set (i have not found a way to use the environment variable for this so this extra step is needed).
 
 ### Setup initial database
 After configuring the environment variables you can start the container by executing:

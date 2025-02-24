@@ -3,8 +3,6 @@ version: "3.8"
 services:
     strichliste:
         image: ghcr.io/strichliste/strichliste-docker:master
-        build:
-            context: .
         # if you use traefik you can remove the ports section
         ports:
             - 8080:8080
