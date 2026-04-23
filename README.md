@@ -65,3 +65,5 @@ After connecting to the database we can finally load the data inside the tables:
 That will load the contents of /source/var/file.csv into the table 'user'.
 
 NOTE: Some lines might not be able to be loaded since some constraints can not be resolved, in my production environment that only happend in case of an user to user payment. Since the users amount is stored in the user table and not calculated, this did not pose a big problem and we proceeded without these transactions (~100 entries of ~1500).
+
+.
