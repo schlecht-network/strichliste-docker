@@ -21,19 +21,19 @@ RUN apk update \
   && apk --no-cache add ca-certificates \
   && apk --no-cache add \
     curl \
-    php81 \
-    php81-ctype \
-    php81-tokenizer \
-    php81-iconv \
-    php81-mbstring \
-    php81-xml \
-    php81-json \
-    php81-dom \
-    php81-pdo_mysql \
-    php81-fpm \
-    php81-session \
-    php81-sqlite3 \
-    php81-pdo_sqlite \
+    php85 \
+    php85-ctype \
+    php85-tokenizer \
+    php85-iconv \
+    php85-mbstring \
+    php85-xml \
+    php85-json \
+    php85-dom \
+    php85-pdo_mysql \
+    php85-fpm \
+    php85-session \
+    php85-sqlite3 \
+    php85-pdo_sqlite \
     nginx \
     bash \
     mysql-client \
