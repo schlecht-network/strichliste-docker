@@ -1,4 +1,4 @@
-FROM alpine:latest as release
+FROM alpine:3.18.3 as release
 
 RUN apk update \
   && apk upgrade \
@@ -9,12 +9,12 @@ RUN apk update \
 
 RUN mkdir /source
 WORKDIR /source
-RUN curl -Lo strichliste.tar.gz https://github.com/strichliste/strichliste/releases/download/v2.0.1/strichliste-v2.0.1.tar.gz
+RUN curl -Lo strichliste.tar.gz https://github.com/strichliste/strichliste/releases/download/v1.8.2/strichliste-v1.8.2.tar.gz
 RUN tar -xf strichliste.tar.gz
 RUN rm -r strichliste.tar.gz
 
 
-FROM alpine:latest
+FROM alpine:3.18.3
 
 RUN apk update \
   && apk upgrade \
