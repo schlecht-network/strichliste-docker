@@ -49,14 +49,14 @@ RUN adduser -u 82 -D -S -G www-data www-data
 RUN chown -R www-data:www-data /source
 RUN chown -R www-data:www-data /var/lib/nginx
 RUN chown -R www-data:www-data /var/log/nginx
-RUN chown -R www-data:www-data /var/log/php85
+RUN chown -R www-data:www-data /var/log/php81
 RUN mkdir /etc/nginx/conf.d
 RUN chown -R www-data:www-data /etc/nginx/conf.d
 
 USER www-data
 
-COPY ./config/php-fpm.conf /etc/php85-fpm.conf
-COPY ./config/www.conf /etc/php85/php-fpm.d/www.conf
+COPY ./config/php-fpm.conf /etc/php81/php-fpm.conf
+COPY ./config/www.conf /etc/php81/php-fpm.d/www.conf
 COPY ./config/nginx.conf /etc/nginx/nginx.conf
 COPY ./config/default.conf /etc/nginx/conf.d/default_source
 
@@ -66,4 +66,4 @@ WORKDIR /source/public
 EXPOSE 8080
 
 ENTRYPOINT ["/source/entrypoint.sh"]
-CMD nginx && php-fpm85
+CMD nginx && php-fpm81
